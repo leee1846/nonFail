@@ -19,6 +19,7 @@ components,
 pages,
 stores,
 styles,
+axios
 
 ### components 폴더
 
