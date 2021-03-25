@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type InitialStateProps = {
+export type InitialStateType = {
   value: number;
 };
 
-const initialState: InitialStateProps = {
+const initialState: InitialStateType = {
   value: 2,
 };
 
@@ -18,7 +18,7 @@ export const testReducer = createSlice({
     decrease: (state) => {
       state.value -= 1;
     },
-    increaseDouble: (state, { payload }: PayloadAction<InitialStateProps>) => {
+    increaseDouble: (state, { payload }: PayloadAction<InitialStateType>) => {
       state.value *= payload.value;
     },
   },

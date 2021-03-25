@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+초기설계를 하면서 라이브러리 사용법의 기본적인 통일성도 필요하다고 생각이 들어서 이해를 돕기위하여 간단하게 plus,minus버튼을 만들어보았습니다. 제가 시도한 접근 방식은 어떠한지 한번 생각해 주시고 적극적으로 의견 말해주시면 수정하겠습니다.
 
-## Available Scripts
+## 설치한 라이브러리 종류
 
-In the project directory, you can run:
+react,
+reduxjs/toolkit,
+redux-logger,
+axios,
+react-router-dom,
+styled-components,
+swr,
+styled-reset
 
-### `yarn start`
+## 폴더트리 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+components,
+pages,
+stores,
+styles,
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### components 폴더
 
-### `yarn test`
+1. components폴더안에 세부적인 폴더로 다시 나눠지며 대문자로 시작합니다.
+2. 컴포넌트폴더명은 컴포넌트명과 동일하며 컴포넌트파일도 대문자로 시작합니다.
+3. 컴포넌트 파일은 tsx파일로 작성하였습니다.( ex:TestComponent.tsx )
+4. 컴포넌트 폴더안에 style파일이 같이 들어가며 컴포넌트파일이름에서.style만 추가됩니다.
+   ( ex:TestComponent.style.ts )
+5. 컴포넌트 파일을 들어가보시면 style 모듈의 전체를 가져오는 방식으로 import 하였습니다.
+   ( ex: import \* as Styled from "./TestComponent.style" )
+   태그를 작성할때 style태그와 컴포넌트를 구분하기 위함입니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### pages 폴더
 
-### `yarn build`
+CSR을 제공하는 react-router-dom을 사용하여 가장 큰 틀의 page를 따로 담은 폴더입니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. RootPage는 모든 page들의 기준점이 되야할것같아서 따로 뺐습니다.
+2. 그외에 추가될 page들이 들어갈 폴더입니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### stores 폴더
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+상태관리를 하게될때 store를 정리한 폴더입니다.
 
-### `yarn eject`
+1. rootStore는 reducer들을 combine하고 최종적으로 store를 export하기 위해서 따로 뺐습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### styles 폴더
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+globalStyle을 따로 뺐으며, 레이아웃을 잡아야하는 파일이 생긴다거나 재사용가능한 style을 따로 뺐으면해서 만들었습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### theme 폴더
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+theme은 계속적으로 재사용될 style palette를 모아둔 폴더입니다.
 
-## Learn More
+### env
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+env파일의 변수명은 항상 REACT_APP으로 시작해야하며, 값이 변경되었을때는 yarn start를 다시해야 확인이 가능합니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### commit 메시지 작성규칙
+
+1. feature : 신규기능
+2. style : 스타일/css 관련
+3. test : test
+4. fix : 기능 오류수정
