@@ -1,30 +1,23 @@
 import React from "react";
 import * as Styled from "./TestComponent.style";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   decrease,
   increase,
   increaseDouble,
 } from "../../stores/testReducer/testReducer";
 //types
-import { AppDispatch, ReducerType } from "../../stores/rootReducer";
+import { ReducerType } from "../../stores/rootReducer";
+import { useClickNumber } from "./../../hooks/useClickNumber";
 
 const TestComponent = () => {
-  const dispatch = useDispatch<AppDispatch>();
-
   const value = useSelector<ReducerType, number>(
     (state) => state.testReducer.value
   );
 
-  const increament = () => {
-    dispatch(increase());
-  };
-  const decreament = () => {
-    dispatch(decrease());
-  };
-  const doubleUp = () => {
-    dispatch(increaseDouble({ value: 2 }));
-  };
+  const [increament] = useClickNumber({ reducer: increase });
+  const [decreament] = useClickNumber({ reducer: decrease });
+  const [doubleUp] = useClickNumber({ reducer: increaseDouble, payload: 2 });
 
   return (
     <div>
