@@ -1,12 +1,15 @@
 import React from "react";
 import { GlobalStyle } from "./styles/globalStyles";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
+import TestComponent from "./components/TestComponent/TestComponent";
 
 const App = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <p>app</p>
-    </div>
+      <TestComponent />
+    </ThemeProvider>
   );
 };
 
